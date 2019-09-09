@@ -9,6 +9,6 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        System.out.println("me too !");
+        System.out.println("合并版本");
     }
 }
