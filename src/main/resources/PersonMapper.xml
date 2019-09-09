@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myMapper">
+
+    <select id="selectPerson" parameterType="integer"  resultType="www.MyBatis.com.entity.Person">
+        select username as personName,old from person where id  >= 1
+    </select>
+
+    <select id="selectPersonOld" parameterType="hashmap" resultType="www.MyBatis.com.entity.Person">
+        select username as personName , old   from person
+        <where>
+            <if test="username != null and username !=''">
+               and  username = #{username}
+            </if>
+
+            <if test="old != null and old != '0'">
+               and  old = #{old}
+            </if>
+        </where>
+    </select>
+    <select id="getOldPerson" resultType="www.MyBatis.com.entity.Person"></select>
+
+    <update id="updatePerson" parameterType="string">
+        update person set username = #{name} where id = 1
+    </update>
+
+    <update id="updatePersonNew" parameterType="hashmap">
+        update person set username = #{name} where id = #{id}
+    </update>
+
+</mapper>
